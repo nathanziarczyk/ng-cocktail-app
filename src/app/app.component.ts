@@ -12,6 +12,6 @@ export class AppComponent implements OnInit {
   constructor(private cocktailService: CocktailService) {}
 
   ngOnInit() {
-    this.cocktailService.search('margarita').subscribe(console.log);
+    this.cocktailService.search('margarita');
   }
 }
