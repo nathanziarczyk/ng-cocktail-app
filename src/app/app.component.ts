@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cocktail } from './models/cocktail.model';
 import { CocktailService } from './services/cocktail-service.service';
 
 @Component({
@@ -7,11 +8,15 @@ import { CocktailService } from './services/cocktail-service.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'cocktail-time';
+  drinks: Cocktail[];
+  loading: boolean = false;
 
   constructor(private cocktailService: CocktailService) {}
 
   ngOnInit() {
-    this.cocktailService.search('margarita');
+    this.loading = true;
+    this.cocktailService.search('margarita').subscribe((data) => {
+      console.log(data);
+    });
   }
 }
